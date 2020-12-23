@@ -1,17 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+//LA FOMRA VIEJA CommonJS
+//const React = require('react')
+//const ReactDOM = require('react-dom')
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//const App = require('./App')
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//LA FORMA NUEVA ES6
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import App from './App'
+
+//JSX
+//const Componente = <p>Hola Mundo</p>
+
+//App()
+//<App/>
+//<App></App>
+
+ReactDOM.render(<App/>,document.getElementById("root"))

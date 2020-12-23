@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import NavBar from './components/NavBar.js'
+//const App = <p>Hola Mundo en modulo</p>
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    //return "Hola Mundo"
+
+    return(
+        <>
+         <header>
+             <h1>Walestream</h1>
+             <NavBar/>
+         </header>
+         <footer>
+             <p>&copy; Copyright 2020</p>
+         </footer>
+         </>
+    )
 }
 
-export default App;
+//lo que pasa en el archivo queda en el archivo. si alguien importa este archivo, obtiene la exportacion App.
+export default App
+
+//CommonJS
+//module.exports = App
