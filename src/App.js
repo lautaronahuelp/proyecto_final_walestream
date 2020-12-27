@@ -1,5 +1,7 @@
-import React from "react"
-import NavBar from './components/NavBar.js'
+import React from 'react'
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
 //const App = <p>Hola Mundo en modulo</p>
 
 function App() {
@@ -8,14 +10,10 @@ function App() {
 
     return(
         <>
-         <header>
-             <h1>Walestream</h1>
-             <NavBar/>
-         </header>
-         <footer>
-             <p>&copy; Copyright 2020</p>
-         </footer>
-         </>
+            <Header saludo="Hola k ase?" cantidad="2"/>
+            <Main funcion={() => {console.log('clicaste wey props')}}/>
+            <Footer />
+        </>
     )
 }
 
