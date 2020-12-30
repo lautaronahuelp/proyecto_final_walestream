@@ -1,11 +1,11 @@
 import React from 'react'
+import ItemListContainer from './ItemListContainer'
 
-const Main = ({funcion}) => {
+const Main = () => {
     return(
-        <main>
-             <h2>Home</h2>
-             <button onClick={() => {console.log('clicaste wey')}}>click</button>
-             <button onClick={funcion}>click dos la venganza</button>
+        <main className="container">
+             <ItemListContainer eventosProximos="No hay eventos programados."/>
+             
         </main>
     )
 }
