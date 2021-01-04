@@ -1,7 +1,6 @@
 import React from 'react'
 import CartWidget from './CartWidget'
 
-//clase, como una funcion pero con metodos de ciclo de vida PARA MI ESTA MAS COPADA QUE LA FUNCION.
 const NavBar = () => {
         return (
             <nav className="nav-wrapper">

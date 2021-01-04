@@ -1,10 +1,10 @@
 import React from 'react'
-import ItemListContainer from './ItemListContainer'
+import ItemListContainer from './components/ItemListContainer'
 
 const Main = () => {
     return(
         <main className="container">
-             <ItemListContainer eventosProximos="No hay eventos programados."/>
+             <ItemListContainer eventosProximos="Los siguientes eventos estan disponibles para compra de entradas:"/>
              
         </main>
     )
