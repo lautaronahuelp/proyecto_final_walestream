@@ -10,7 +10,7 @@ const ItemListContainer = function(props){
             <p>{props.eventosProximos}</p>
             <div>
                 <h4>EVENTO 1</h4>
-                <ItemCount />
+                <ItemCount sto={20} ini={1} onAdd={() => {console.log('se agrego al carrito')}} />
             </div>
         </div>
         
