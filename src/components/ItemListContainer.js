@@ -10,7 +10,15 @@ const ItemListContainer = function(props){
             <p>{props.eventosProximos}</p>
             <div>
                 <h4>EVENTO 1</h4>
-                <ItemCount sto={20} ini={1} onAdd={() => {console.log('se agrego al carrito')}} />
+                <ItemCount stock={20} initial={1} onAdd={(count, initial, setCount) => {
+                    if(count !== 0) {
+
+                        setCount(initial)
+
+                        console.log(`se agregaron al carrito ${count} unidades`)
+                    } else {
+                        console.log('Seleccina productos para agregar al carrito')
+                }}} />
             </div>
         </div>
         

@@ -1,11 +1,8 @@
 import React , {useState} from 'react'
 
-const ItemCount = ({sto, ini, onAdd}) => {
+const ItemCount = ({stock, initial, onAdd}) => {
 
-        const [count, setCount] = useState(ini)
-        const [stock, setStock] = useState(sto)
-
-        console.log(stock)
+        const [count, setCount] = useState(initial)
 
         function aumentaCantidad () {
             if (compruebaStock) {
@@ -32,17 +29,6 @@ const ItemCount = ({sto, ini, onAdd}) => {
             return out
         }
 
-        function agregaAlCarrito() {
-            if(count !== 0) {
-                setStock(stock - count)
-
-                setCount(ini)
-
-                onAdd()
-            } else {
-                console.log('Seleccina productos para agregar al carrito')
-            }
-        }
 
 
         return (
@@ -51,7 +37,7 @@ const ItemCount = ({sto, ini, onAdd}) => {
                 <p>{count}</p>
                 <button onClick={ aumentaCantidad }>+</button>
                 
-                <button onClick={ compruebaStock ? agregaAlCarrito : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+                <button onClick={ compruebaStock ? () => { onAdd(count, initial, setCount)} : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
             </div>
         )
 }
