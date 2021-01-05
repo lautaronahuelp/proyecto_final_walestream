@@ -3,12 +3,14 @@ import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
 import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
 import './estilos.css'
 //const App = <p>Hola Mundo en modulo</p>
 
 function App() {
 
-    //return "Hola Mundo"
+    //JS MATERIALIZE
+    
 
     return(
         <>
