@@ -33,11 +33,11 @@ const ItemCount = ({stock, initial, onAdd}) => {
 
         return (
             <div>
-                <button onClick={ reduceCantidad }>-</button>
+                <button className="waves-effect waves-light btn-small" onClick={ reduceCantidad }>-</button>
                 <p>{count}</p>
-                <button onClick={ aumentaCantidad }>+</button>
+                <button className="waves-effect waves-light btn-small" onClick={ aumentaCantidad }>+</button>
                 
-                <button onClick={ compruebaStock ? () => { onAdd(count, initial, setCount)} : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+                <button className="waves-effect waves-light btn-small" onClick={ compruebaStock ? () => { onAdd(count, initial, setCount)} : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
             </div>
         )
 }
