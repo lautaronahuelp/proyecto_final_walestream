@@ -1,5 +1,6 @@
 import React , {useEffect, useState} from 'react'
 import Item from './Item';
+import ItemDetailContainer from './ItemDetailContainer';
 
 const ItemList = () => {
     const [productos, setProductos] = useState([])
@@ -30,7 +31,10 @@ const ItemList = () => {
         <>
             {productos.length > 0 ? productos.map((item) => {
                 return(
-                <Item key={item.id} id={item.id} title={item.title} description={item.description} price={item.price} pictureUrl={item.pictureUrl}/>
+                    <>
+                <Item key={'itm' + item.id} id={item.id} title={item.title} description={item.description} price={item.price} pictureUrl={item.pictureUrl}/>
+                <ItemDetailContainer />
+                </>
                 )
             }) : <p>Cargando eventos...</p>}
         </>

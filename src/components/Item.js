@@ -12,7 +12,7 @@ const Item = ({id, title, description, price, pictureUrl}) => {
         </div>
         <div className="card-content">
           <p>{description}</p>
-          <p>{price}</p>
+          <p>${price}</p>
           <ItemCount stock={20} initial={1} onAdd={(count, initial, setCount) => {
             if(count !== 0) {
 
