@@ -5,6 +5,7 @@ import Footer from './Footer'
 import 'materialize-css/dist/css/materialize.min.css'
 import 'materialize-css/dist/js/materialize.min.js'
 import './estilos.css'
+import ItemDetailContainer from './components/ItemDetailContainer'
 //const App = <p>Hola Mundo en modulo</p>
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <>
             <Header />
             <Main />
+            <ItemDetailContainer />
             <Footer />
         </>
     )

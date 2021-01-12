@@ -33,7 +33,6 @@ const ItemList = () => {
                 return(
                     <>
                 <Item key={'itm' + item.id} id={item.id} title={item.title} description={item.description} price={item.price} pictureUrl={item.pictureUrl}/>
-                <ItemDetailContainer />
                 </>
                 )
             }) : <p>Cargando eventos...</p>}

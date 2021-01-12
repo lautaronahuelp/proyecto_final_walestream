@@ -9,7 +9,7 @@ const ItemDetailContainer = () => {
 
         const getItems = new Promise((res, rej) =>{
             setTimeout(() => {
-                const item = {id:1, title: "evento 1", description:"descripcion del evento uno", price:500, pictureUrl:"https://i.pinimg.com/originals/7c/06/8b/7c068be74941226b80161e8cc8dafa01.jpg"}
+                const item = [{id:1, title: "evento 1", description:"descripcion del evento uno", price:500, pictureUrl:"https://i.pinimg.com/originals/7c/06/8b/7c068be74941226b80161e8cc8dafa01.jpg"}]
                 res(item)
                 console.log('terminado taimaut detail')
             }, 2000)
