@@ -1,11 +1,22 @@
 import React from 'react'
 import ItemListContainer from './components/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import { Switch , Route } from 'react-router-dom'
 
 const Main = () => {
     return(
         <main className="container">
-             <ItemListContainer eventosProximos="Los siguientes eventos estan disponibles para compra de entradas:"/>
-             
+            <Switch>
+            <Route exact path='/'>
+                <ItemListContainer />
+            </Route>
+            <Route exact path='/category/:id'>
+                <ItemListContainer />
+            </Route>
+            <Route exact path='/items/:id'>
+                <ItemDetailContainer />
+            </Route>
+            </Switch>
         </main>
     )
 }

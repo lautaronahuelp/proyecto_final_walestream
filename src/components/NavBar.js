@@ -1,12 +1,13 @@
 import React from 'react'
 import CartWidget from './CartWidget'
+import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
         return (
             <>
                 <nav>
                     <div className="nav-wrapper">
-                        <a href="#!" className="brand-logo">Logo</a>
+                        <NavLink to="/" className="brand-logo">Logo</NavLink>
                         <a href="#!" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
                             <li><a href="#!">Mi perfil</a></li>
@@ -24,14 +25,14 @@ const NavBar = () => {
                     <li><a href="#!">Cerrar sesión</a></li>
                 </ul>
                 <ul id="dropdown_eventos" className="dropdown-content">
-                    <li><a href="#!">Recitales</a></li>
-                    <li><a href="#!">Obras</a></li>
-                    <li><a href="#!">Conferencias</a></li>
+                    <li><NavLink to="/category/recitales">Recitales</NavLink></li>
+                    <li><NavLink to="/category/obras">Obras</NavLink></li>
+                    <li><NavLink to="/category/conferencias">Conferencias</NavLink></li>
                 </ul>
                 <ul id="dropdown_eventos_side" className="dropdown-content">
-                    <li><a href="#!">Recitales</a></li>
-                    <li><a href="#!">Obras</a></li>
-                    <li><a href="#!">Conferencias</a></li>
+                    <li><NavLink to="/category/recitales">Recitales</NavLink></li>
+                    <li><NavLink to="/category/obras">Obras</NavLink></li>
+                    <li><NavLink to="/category/conferencias">Conferencias</NavLink></li>
                 </ul>
             </>
         )
