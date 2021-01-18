@@ -5,7 +5,6 @@ import Item from './Item';
 const ItemList = ({ catId }) => {
     const [productos, setProductos] = useState([])
     useEffect(() => {
-        console.log(catId)
         const promesa = new Promise((resolver, reject) => {
             
             setTimeout(()=>{

@@ -11,7 +11,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         }
 
         function reduceCantidad () {
-            if (count > 0) {
+            if (count > 1) {
                 setCount(count - 1)
             }
         }
@@ -37,7 +37,16 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 <p>{count}</p>
                 <button className="waves-effect waves-light btn-small" onClick={ aumentaCantidad }>+</button>
                 
-                <button className="waves-effect waves-light btn-small" onClick={ compruebaStock ? () => { onAdd(count, initial, setCount)} : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+                <button className="waves-effect waves-light btn-small" onClick={ compruebaStock ? () => {
+            if(count !== 0) {
+
+                setCount(initial)
+                
+                onAdd(count)
+                
+            } else {
+                console.log('Seleccina productos para agregar al carrito')
+        }} : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
             </div>
         )
 }

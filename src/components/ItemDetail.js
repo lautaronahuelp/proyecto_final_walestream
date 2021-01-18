@@ -1,22 +1,28 @@
-import React from 'react'
+import React , { useState } from 'react'
+import { Link } from 'react-router-dom'
 import ItemCount from './ItemCount'
 
 const ItemDetail = ({id, title, description, price, pictureUrl}) => {
+
+    const [cantidad, setCantidad] = useState(0)
+
+    const onAdd = (quantityToAdd) => {
+
+        setCantidad(quantityToAdd)
+        console.log(`se agregaron al carrito ${quantityToAdd} unidades`)
+
+    }
+
     return (
         <div id={id}>
             <h3>{title}</h3>
             <img src={pictureUrl} alt={title}></img>
             <p>{description}</p>
             <p>${price}</p>
-            <ItemCount stock={20} initial={1} onAdd={(count, initial, setCount) => {
-            if(count !== 0) {
+            { cantidad === 0 ? <ItemCount stock={20} initial={1} onAdd={onAdd} /> : <Link to="/cart"><button className="waves-effect waves-light btn-small">Terminar compra</button></Link>
 
-                setCount(initial)
-
-                console.log(`se agregaron al carrito ${count} unidades`)
-            } else {
-                console.log('Seleccina productos para agregar al carrito')
-        }}} />
+            }
+            
         </div>
     )
 }
