@@ -4,19 +4,19 @@ const ItemCount = ({stock, initial, onAdd}) => {
 
         const [count, setCount] = useState(initial)
 
-        function aumentaCantidad () {
+        const aumentaCantidad = () => {
             if (compruebaStock) {
                 setCount(count + 1)
             }
         }
 
-        function reduceCantidad () {
+        const reduceCantidad = () => {
             if (count > 1) {
                 setCount(count - 1)
             }
         }
 
-        function compruebaStock() {
+        const compruebaStock = () => {
             let out
             if (count < stock) {
                 out = 1
@@ -29,15 +29,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             return out
         }
 
-
-
-        return (
-            <div>
-                <button className="waves-effect waves-light btn-small" onClick={ reduceCantidad }>-</button>
-                <p>{count}</p>
-                <button className="waves-effect waves-light btn-small" onClick={ aumentaCantidad }>+</button>
-                
-                <button className="waves-effect waves-light btn-small" onClick={ compruebaStock ? () => {
+        const agregarAlCarrito  = () => {
             if(count !== 0) {
 
                 setCount(initial)
@@ -46,7 +38,20 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 
             } else {
                 console.log('Seleccina productos para agregar al carrito')
-        }} : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+        }}
+
+
+
+        return (
+            <div>
+                <div className="row">
+                    <button className="waves-effect waves-light btn-small" onClick={ reduceCantidad }>-</button>
+                    <span>{count}</span>
+                    <button className="waves-effect waves-light btn-small" onClick={ aumentaCantidad }>+</button>
+                </div>
+                <div>
+                    <button className="waves-effect waves-light btn-small" onClick={ compruebaStock ? agregarAlCarrito : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+                </div>
             </div>
         )
 }

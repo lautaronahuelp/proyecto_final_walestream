@@ -29,7 +29,7 @@ const ItemDetailContainer = () => {
                     
                 }
                 
-                console.log(item)
+                
                 
                 console.log('terminado el timeout deatail' + id)
 
