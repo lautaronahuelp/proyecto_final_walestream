@@ -1,6 +1,7 @@
 import React , {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import Item from './Item';
+import Item from './Item'
+import Loader from './Loader'
 
 const ItemList = ({ catId }) => {
     const [productos, setProductos] = useState([])
@@ -50,7 +51,7 @@ const ItemList = ({ catId }) => {
                         <Item key={'itm' + item.id} id={item.id} title={item.title} description={item.description} price={item.price} pictureUrl={item.pictureUrl}/>
                     </Link>
                 )
-            }) : <p>Cargando eventos...</p>}
+            }) : <Loader />}
         </>
     )
 }

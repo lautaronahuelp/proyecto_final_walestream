@@ -1,9 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-const CartWidget = function(){
+
+const CartWidget = function({ quantity }){
 
     return(
-        <i id="cartWidget" className="material-icons">shop</i>
+        <li>
+            <span className="badge blue" data-badge-caption="">{ quantity }</span>
+            <NavLink to="/cart"><i id="cartWidget" className="material-icons">shop</i></NavLink>
+        </li>
     )
 }
 

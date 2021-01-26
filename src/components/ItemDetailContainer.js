@@ -1,5 +1,6 @@
 import React , { useEffect , useState} from 'react'
 import ItemDetail from './ItemDetail'
+import Loader from './Loader'
 import { useParams } from 'react-router-dom'
 
 
@@ -47,7 +48,7 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-        {evento.length >0 ? <ItemDetail id={evento[0].id} title={evento[0].title} description={evento[0].description} price={evento[0].price} pictureUrl={evento[0].pictureUrl}/> : <p>Cargando detalles...</p>}
+        {evento.length >0 ? <ItemDetail id={evento[0].id} title={evento[0].title} description={evento[0].description} price={evento[0].price} pictureUrl={evento[0].pictureUrl}/> : <Loader />}
         </>
     )
 }

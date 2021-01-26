@@ -37,7 +37,7 @@ const CartState = ({ children }) => {
     }
 
     const removeItem = (itemid) => {
-        const newCart = cart.filter(item => item.item.id !== itemid)
+        const newCart = cart.filter(item => item.item.id !== itemid.target.parentNode.parentNode.id)
         setCart(newCart)
     }
     const clear = () => {
@@ -49,8 +49,29 @@ const CartState = ({ children }) => {
         return existe !== undefined ? true : false
     }
 
+    const totalProductos = () => {
+        let precioTot = 0
+        let cantTot = 0
+
+
+        cart.forEach((item)=>{
+
+            precioTot += item.item.price * item.quantity
+            cantTot += item.quantity
+
+        })
+
+        let totales = {
+            price: precioTot,
+            quantity: cantTot
+        }
+
+
+        return totales
+    }
+
     return(
-        <CartContext.Provider value={{cart , addItem , removeItem , clear}}>
+        <CartContext.Provider value={{cart , addItem , removeItem , clear, totalProductos}}>
             { children }
         </CartContext.Provider>
     )
