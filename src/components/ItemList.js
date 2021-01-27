@@ -1,50 +1,43 @@
-import React , {useEffect, useState} from 'react'
+import React , {useEffect, useState , useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Item from './Item'
 import Loader from './Loader'
+import DatabaseContext from '../context/DatabaseContext'
 
 const ItemList = ({ catId }) => {
+    
+    const contexto = useContext(DatabaseContext)
     const [productos, setProductos] = useState([])
+    
     useEffect(() => {
-        const promesa = new Promise((resolver, reject) => {
-            
-            setTimeout(()=>{
-                const itemsFull = [
-                    {id:1, title: "evento 1", category: "obras", description:"descripcion del evento uno", price:500, pictureUrl:"https://i.pinimg.com/originals/7c/06/8b/7c068be74941226b80161e8cc8dafa01.jpg"},
-                    {id:2, title: "evento 2", category: "recitales", description:"descripcion del evento dos", price:500, pictureUrl:"https://i.pinimg.com/originals/7c/06/8b/7c068be74941226b80161e8cc8dafa01.jpg"},
-                    {id:3, title: "evento 3", category: "recitales", description:"descripcion del evento tres", price:500, pictureUrl:"https://i.pinimg.com/originals/7c/06/8b/7c068be74941226b80161e8cc8dafa01.jpg"},
-                    {id:4, title: "evento 4", category: "conferencias", description:"descripcion del evento cuatro", price:500, pictureUrl:"https://i.pinimg.com/originals/7c/06/8b/7c068be74941226b80161e8cc8dafa01.jpg"}]
-                let items = []
-                
-                if (catId !== undefined){
-                    items = itemsFull.filter((f) =>{
-                        return f.category === catId
-                    }
-                    )
-                } else {
-                    items = itemsFull
-                }
-                
-                
-                
-                console.log('terminado el timeout')
-
-
-                resolver(items)
-            },2000)
-
-            
-        })
-
-        promesa
+        contexto.obtenerProductos(catId)
+    
         .then((resultado) => {
-            setProductos(resultado)
-        })
-        
-    }, [catId])
+            let items =[]
+            const item_array = resultado.docs
+            
+            item_array.forEach(item=>{
+                
+                const producto_final = {
+                    id: item.id,
+                    ...item.data()
+                }
 
+                items = [...items, producto_final]
+            })
+
+            setProductos(items)
+            
+        })
+        .catch((err) => {
+            console.log('error:')
+            console.log(err)
+        })
+    }, [catId, contexto])
+    
+    
     return (
-        <>
+        <div className="row">
             {productos.length > 0 ? productos.map((item) => {
                 return(
                     <Link  key={'lnk' + item.id}  to={'/items/' + item.id}>
@@ -52,7 +45,7 @@ const ItemList = ({ catId }) => {
                     </Link>
                 )
             }) : <Loader />}
-        </>
+        </div>
     )
 }
 

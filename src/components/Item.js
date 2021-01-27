@@ -3,8 +3,7 @@ import React from 'react'
 
 const Item = ({id, title, description, price, pictureUrl}) => {
     return (
-        <div id={id} className="row">
-          <div className="col s12 m7">
+          <div  id={id} className="col s12 m3">
             <div className="card small">
               <div className="card-image">
                 <img src={pictureUrl} alt={title} width="300"></img>
@@ -15,12 +14,9 @@ const Item = ({id, title, description, price, pictureUrl}) => {
                 <p>${price}</p>
                
               </div>
-              {/*<div className="card-action">
-              <a href="#!">This is a link</a>
-          </div>*/}
+             
             </div>
           </div>
-        </div>
         
     )
 }

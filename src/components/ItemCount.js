@@ -5,7 +5,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         const [count, setCount] = useState(initial)
 
         const aumentaCantidad = () => {
-            if (compruebaStock) {
+            if (compruebaStock()) {
                 setCount(count + 1)
             }
         }
@@ -43,16 +43,15 @@ const ItemCount = ({stock, initial, onAdd}) => {
 
 
         return (
-            <div>
-                <div className="row">
-                    <button className="waves-effect waves-light btn-small" onClick={ reduceCantidad }>-</button>
-                    <span>{count}</span>
-                    <button className="waves-effect waves-light btn-small" onClick={ aumentaCantidad }>+</button>
-                </div>
-                <div>
-                    <button className="waves-effect waves-light btn-small" onClick={ compruebaStock ? agregarAlCarrito : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
-                </div>
-            </div>
+            
+                <>
+                    <button className="waves-effect waves-light btn" onClick={ reduceCantidad }><i className="material-icons">exposure_neg_1</i></button>
+                    <span>x{count}</span>
+                    <button className="waves-effect waves-light btn" onClick={ aumentaCantidad }><i className="material-icons">exposure_plus_1</i></button>
+                    <button className="waves-effect waves-light btn" onClick={ compruebaStock ? agregarAlCarrito : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+
+                </>
+            
         )
 }
 

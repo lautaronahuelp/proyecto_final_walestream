@@ -4,6 +4,7 @@ import CartContext from './CartContext'
 const CartState = ({ children }) => {
 
     const [cart, setCart] = useState([])
+    const [levante, setLevante] = useState(false)
 
     const addItem = (item, quantity) => {
         let cartProvisorio = []
@@ -34,14 +35,17 @@ const CartState = ({ children }) => {
 
         console.log(cartProvisorio)
         setCart(cartProvisorio)
+        persistirCart(cartProvisorio)
     }
 
     const removeItem = (itemid) => {
         const newCart = cart.filter(item => item.item.id !== itemid.target.parentNode.parentNode.id)
         setCart(newCart)
+        persistirCart(newCart)
     }
     const clear = () => {
         setCart([])
+        localStorage.removeItem('carritoWalestream')
     }
     const IsInCart = (id) => {
         let existe = cart.find(preItem => preItem.item.id === id)
@@ -70,8 +74,28 @@ const CartState = ({ children }) => {
         return totales
     }
 
+    const persistirCart = (cartAPersistir) => {
+        console.log('carrito persistido')
+        localStorage.setItem('carritoWalestream', JSON.stringify(cartAPersistir))
+        console.log(localStorage.getItem('carritoWalestream'))
+    }
+
+    const levantarCart = () => {
+        let carritoStor = JSON.parse(localStorage.getItem('carritoWalestream'))
+        if (!levante && carritoStor) {
+            let cartLevantado = cart
+            carritoStor.forEach((item) => {
+                cartLevantado = [...cartLevantado, {item: item.item, quantity: item.quantity}]
+                
+            })
+            setCart(cartLevantado)
+            setLevante(true)
+            
+        }
+    }
+
     return(
-        <CartContext.Provider value={{cart , addItem , removeItem , clear, totalProductos}}>
+        <CartContext.Provider value={{cart , addItem , removeItem , clear, totalProductos, levantarCart}}>
             { children }
         </CartContext.Provider>
     )
