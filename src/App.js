@@ -7,8 +7,7 @@ import 'materialize-css/dist/js/materialize.min.js'
 import './estilos.css'
 import { BrowserRouter } from 'react-router-dom'
 import CartState from './context/CartState'
-//import { firestore } from './firebaseConfig'
-
+import DatabaseState from './context/DatabaseState'
 
 
 function App() {
@@ -44,11 +43,13 @@ function App() {
 
     return( 
         <CartState>
-            <BrowserRouter>
-                <Header />
-                <Main />
-                <Footer />
-            </BrowserRouter>
+            <DatabaseState>
+                <BrowserRouter>
+                    <Header />
+                    <Main />
+                    <Footer />
+                </BrowserRouter>
+            </DatabaseState>
         </CartState>
        
     )

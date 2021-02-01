@@ -12,10 +12,6 @@ const ItemDetailContainer = () => {
     const { id } = useParams()
 
     useEffect(() => {
-
-
-    
-        console.log(contexto)
         contexto.obtenerDetalle(id)
         .then((item) =>{
             const item_detalle = [{

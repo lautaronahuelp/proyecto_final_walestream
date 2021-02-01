@@ -2,6 +2,7 @@ import React , { useContext , useEffect } from 'react'
 import CartWidget from './CartWidget'
 import { NavLink } from 'react-router-dom'
 import CartContext from '../context/CartContext'
+import CategoriesList from './CategoriesList'
 
 const NavBar = () => {
     const context = useContext(CartContext)
@@ -46,14 +47,10 @@ const NavBar = () => {
                     <li><a href="#!">Cerrar sesión</a></li>
                 </ul>
                 <ul id="dropdown_eventos" className="dropdown-content">
-                    <li><NavLink to="/category/recitales">Recitales</NavLink></li>
-                    <li><NavLink to="/category/obras">Obras</NavLink></li>
-                    <li><NavLink to="/category/conferencias">Conferencias</NavLink></li>
+                    <CategoriesList />
                 </ul>
                 <ul id="dropdown_eventos_side" className="dropdown-content">
-                    <li><NavLink to="/category/recitales">Recitales</NavLink></li>
-                    <li><NavLink to="/category/obras">Obras</NavLink></li>
-                    <li><NavLink to="/category/conferencias">Conferencias</NavLink></li>
+                    <CategoriesList />
                 </ul>
             </>
         )
