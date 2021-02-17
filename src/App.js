@@ -1,4 +1,4 @@
-import React , { useEffect } from 'react'
+import React from 'react'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
@@ -11,34 +11,6 @@ import DatabaseState from './context/DatabaseState'
 
 
 function App() {
-    
-    useEffect(()=>{
-
-        /*const db = firestore
-        const collection = db.collection('items')
-        const query = collection.get()
-
-        query
-        .then((resultado)=>{
-
-            const item_array = resultado.docs
-
-            item_array.forEach(item=>{
-                
-                const producto_final = {
-                    id: item.id,
-                    ...item.data()
-                }
-
-                console.log(producto_final)
-            })
-        })
-        .catch(()=>{
-            console.log('fallo en el promise firebase')
-        })*/
-
-    })
-
     
 
     return( 

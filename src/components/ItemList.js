@@ -1,4 +1,4 @@
-import React , {useEffect, useState , useContext } from 'react'
+import React , {useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Item from './Item'
 import Loader from './Loader'
@@ -7,38 +7,33 @@ import DatabaseContext from '../context/DatabaseContext'
 const ItemList = ({ catId }) => {
     
     const contexto = useContext(DatabaseContext)
-    const [productos, setProductos] = useState([])
     
-    useEffect(() => {
-        contexto.obtenerProductos(catId)
-    
-        .then((resultado) => {
-            let items =[]
-            const item_array = resultado.docs
-            
-            item_array.forEach(item=>{
-                
-                const producto_final = {
-                    id: item.id,
-                    ...item.data()
-                }
 
-                items = [...items, producto_final]
+    useEffect(() => {
+        let control = []
+        if (catId !== undefined){
+            const elemento = contexto.productosCont.find((item) => {
+                return item.category !== catId
             })
 
-            setProductos(items)
-            
-        })
-        .catch((err) => {
-            console.log('error:')
-            console.log(err)
-        })
-    }, [catId, contexto])
+            control = [...control, elemento]
+            if(control.length > 0){
+                contexto.obtenerProductos(catId)
+            }
+
+        } else {
+            contexto.obtenerProductos(catId)
+        }
+        
+       
+
+    
+    },[catId, contexto])
     
     
     return (
         <div className="row">
-            {productos.length > 0 ? productos.map((item) => {
+            {contexto.productosCont.length > 0 ? contexto.productosCont.map((item) => {
                 return(
                     <Link  key={'lnk' + item.id}  to={'/items/' + item.id}>
                         <Item key={'itm' + item.id} id={item.id} title={item.title} description={item.description} price={item.price} pictureUrl={item.pictureUrl}/>

@@ -1,19 +1,10 @@
-import React , { useContext , useEffect } from 'react'
+import React from 'react'
 import CartWidget from './CartWidget'
 import { NavLink } from 'react-router-dom'
-import CartContext from '../context/CartContext'
+/**/
 import CategoriesList from './CategoriesList'
 
 const NavBar = () => {
-    const context = useContext(CartContext)
-    const quantity = context.totalProductos().quantity
-    
-
-    useEffect(() => {
-        context.levantarCart()
-    }
-    )
-
         return (
             <>
                 <nav>
@@ -25,15 +16,9 @@ const NavBar = () => {
                             </a>
                             <ul className="right hide-on-med-and-down">
                                 <li>
-                                    <a href="#!">Mi perfil</a>
-                                </li>
-                                <li>
                                     <a className="dropdown-trigger" href="#!" data-target="dropdown_eventos">Eventos<i className="material-icons right">arrow_drop_down</i></a>
                                 </li>
-                                {quantity ? <CartWidget quantity={quantity}/> : ""}
-                                <li>
-                                    <a href="#!">Cerrar sesión</a>
-                                </li>
+                                <CartWidget />
                             </ul>
                         </div>
                     </div>
@@ -41,10 +26,8 @@ const NavBar = () => {
                 </nav>
 
                 <ul className="sidenav" id="mobile-demo">
-                    <li><a href="#!">Mi perfil</a></li>
                     <li><a className="dropdown-trigger" href="#!" data-target="dropdown_eventos_side">Eventos<i className="material-icons right">arrow_drop_down</i></a></li>
-                    {quantity ? <CartWidget quantity={quantity}/> : ""}
-                    <li><a href="#!">Cerrar sesión</a></li>
+                    <CartWidget />
                 </ul>
                 <ul id="dropdown_eventos" className="dropdown-content">
                     <CategoriesList />

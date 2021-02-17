@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useState } from 'react'
 import DatabaseContext from './DatabaseContext'
 import { firestore } from '../firebaseConfig'
 import firebase from 'firebase/app'
@@ -6,7 +6,8 @@ import firebase from 'firebase/app'
 const DatabaseState = ({children}) => {
     const db = firestore
     const collection = db.collection('items')
-    
+    const [productosCont, setProductosCont] = useState([])
+    const [categories, setCategories] = useState([])
 
 
     const obtenerProductos = (categoria) => {
@@ -16,9 +17,29 @@ const DatabaseState = ({children}) => {
         } else {
             query = collection.get()
         }
-
         
-        return query
+        query
+        .then((resultado) => {
+            let items =[]
+            const item_array = resultado.docs
+            
+            item_array.forEach(item=>{
+                
+                const producto_final = {
+                    id: item.id,
+                    ...item.data()
+                }
+
+                items = [...items, producto_final]
+            })
+
+            setProductosCont(items)
+            
+        })
+        .catch((err) => {
+            console.log('error:')
+            console.log(err)
+        })
         
         
     }
@@ -33,7 +54,31 @@ const DatabaseState = ({children}) => {
     const obtenerCategorias = () => {
         let collection = db.collection('categories')
         let query = collection.get()
-        return query
+
+        query
+        .then((resultado) => {
+            let categorias =[]
+            const cat_array = resultado.docs
+            
+            cat_array.forEach(cate=>{
+                
+                const cate_final = {
+                    id: cate.id,
+                    ...cate.data()
+                }
+
+                categorias = [...categorias, cate_final]
+            })
+
+            setCategories(categorias)
+            
+        })
+        .catch((err) => {
+            console.log('error:')
+            console.log(err)
+        })
+
+       
     }
 
     const crearOrden = (apellido, nombre, email, telefono, compra, total) => {
@@ -58,7 +103,7 @@ const DatabaseState = ({children}) => {
     }
 
     return (
-        <DatabaseContext.Provider value={{ obtenerProductos , obtenerDetalle , obtenerCategorias , crearOrden}}>
+        <DatabaseContext.Provider value={{ categories , productosCont , obtenerProductos , obtenerDetalle , obtenerCategorias , crearOrden}}>
             {children}
         </DatabaseContext.Provider>
     )

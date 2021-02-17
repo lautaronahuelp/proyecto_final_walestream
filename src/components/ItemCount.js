@@ -20,9 +20,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             let out
             if (count < stock) {
                 out = 1
-                console.log('Hay stock')
             } else {
-                console.log('No hay mas stock')
                 out = 0
             }
 
@@ -36,20 +34,26 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 
                 onAdd(count)
                 
-            } else {
-                console.log('Seleccina productos para agregar al carrito')
-        }}
+            }
+        }
 
 
 
         return (
-            
                 <>
+                <div className="row">
+                   
                     <button className="waves-effect waves-light btn" onClick={ reduceCantidad }><i className="material-icons">exposure_neg_1</i></button>
+                    
                     <span>x{count}</span>
+                    
                     <button className="waves-effect waves-light btn" onClick={ aumentaCantidad }><i className="material-icons">exposure_plus_1</i></button>
-                    <button className="waves-effect waves-light btn" onClick={ compruebaStock ? agregarAlCarrito : console.log('Selecciona productos para agregar al carrito') } >Agregar al carrito</button>
+                    
+                </div>
+                <div className="row">
+                    <button className="waves-effect waves-light btn" onClick={ agregarAlCarrito } >Agregar al carrito</button>
 
+                </div>
                 </>
             
         )

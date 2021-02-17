@@ -61,7 +61,7 @@ const CheckOut = ({compra, total}) => {
           </div>
         </form>
       </div>
-      : ordenId !== "" ? <div className="row"><div className="col s12"><p>Código de su compra: {ordenId}</p></div></div> :<></>}
+      : ordenId !== "" ? <div className="row"><div className="col s12"><h3>Compra realizada con exito.</h3><p>Código de su compra: {ordenId}</p></div></div> :<></>}
       </>
     )
 }

@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom'
 const ItemListContainer = function(){
 
     const { id } = useParams()
-
     return(
         
             <div>

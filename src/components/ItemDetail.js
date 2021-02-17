@@ -22,12 +22,10 @@ const ItemDetail = ({id, title, description, price, stock, pictureUrl}) => {
 
         contexto.addItem(itemObjetado, quantityToAdd)
 
-        console.log(`se agregaron al carritso ${quantityToAdd} unidades`)
     
 
     }
-    console.log('carrito contextual:')
-    console.log(contexto.cart)
+
 
 
 

@@ -3,25 +3,23 @@ import { NavLink } from 'react-router-dom'
 import DatabaseContext from '../context/DatabaseContext'
 
 const CategoriesList = () => {
-    const [categories, setCategories] = useState([])
+    
     const contexto = useContext(DatabaseContext)
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        contexto.obtenerCategorias()
-        .then((resultado) => {
-            
-            setCategories(Object.values(resultado.docs[0].data()))
-        })
-        .catch((err) => {
-            console.log('error: '+err)
-        })
-    })
+        if(contexto.categories.length > 0){
+            setCategories(contexto.categories)
+        } else {
+            contexto.obtenerCategorias()
+        }
+    },[contexto])
 
     return(
         <>
         {categories.map((cate) => {
             return(
-                <li key={cate}><NavLink to={"/category/"+cate}>{cate}</NavLink></li>
+                <li key={cate.key}><NavLink to={"/category/"+cate.key}>{cate.description}</NavLink></li>
             )
         }
         )}

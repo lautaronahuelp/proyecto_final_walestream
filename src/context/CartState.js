@@ -25,7 +25,6 @@ const CartState = ({ children }) => {
 
 
             cartProvisorio = [...cartFiltereado, {item: item, quantity: newQuant}]
-            console.log(cartProvisorio)
 
             
         } else {
@@ -33,7 +32,6 @@ const CartState = ({ children }) => {
             
         }
 
-        console.log(cartProvisorio)
         setCart(cartProvisorio)
         persistirCart(cartProvisorio)
     }
@@ -75,22 +73,19 @@ const CartState = ({ children }) => {
     }
 
     const persistirCart = (cartAPersistir) => {
-        console.log('carrito persistido')
         localStorage.setItem('carritoWalestream', JSON.stringify(cartAPersistir))
-        console.log(localStorage.getItem('carritoWalestream'))
     }
 
     const levantarCart = () => {
         let carritoStor = JSON.parse(localStorage.getItem('carritoWalestream'))
-        if (!levante && carritoStor) {
-            let cartLevantado = cart
+        if ((!levante) && carritoStor) {
+            let cartLevantado = []
             carritoStor.forEach((item) => {
-                cartLevantado = [...cartLevantado, {item: item.item, quantity: item.quantity}]
+                cartLevantado = [...cartLevantado, { item: item.item, quantity: item.quantity }]
                 
             })
             setCart(cartLevantado)
             setLevante(true)
-            
         }
     }
 

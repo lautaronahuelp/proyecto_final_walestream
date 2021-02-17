@@ -12,8 +12,16 @@ const Cart = () => {
         <>
         {carrito.length > 0 ? <><CartItemList context={context}/></> :
         <>
-            <h2>Tu carrito está vacío.</h2>
-            <Link to="/"><button className="waves-effect waves-light btn-small">Ir a comprar</button></Link>
+            <div className='row'>
+                <div className="col s10">
+                    <h2>Tu carrito está vacío.</h2>
+                </div>
+            </div>
+            <div className='row'>
+                <div className="col s10">
+                    <Link to="/"><button className="waves-effect waves-light btn-small">Volver a comprar</button></Link>
+                </div>
+            </div>
         </>}
         <CheckOut compra={context.cart} total={context.totalProductos().price}/>
         </>
